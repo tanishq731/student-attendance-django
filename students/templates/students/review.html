@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Review Attendance Requests</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'students/style.css' %}">
+</head>
+<body>
+    <h2>Pending Attendance Submissions</h2>
+    <form method="POST">
+    {% csrf_token %}
+    <table>
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Name</th>
+                <th>Roll No</th>
+                <th>Course</th>
+                <th>Status</th>
+                <th>Submitted At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in requests %}
+            <tr>
+                <td><input type="checkbox" name="selected" value="{{ request.id }}"></td>
+                <td>{{ request.name }}</td>
+                <td>{{ request.roll_no }}</td>
+                <td>{{ request.course }}</td>
+                <td>{{ request.status }}</td>
+                <td>{{ request.submitted_at }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="6">No pending requests.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <button type="submit" name="action" value="approve">✅ Approve Selected</button>
+    <button type="submit" name="action" value="reject">❌ Reject Selected</button>
+</form>
+
+    <br>
+    <a href="{% url 'home' %}">← Back to Home</a>
+</body>
+</html>

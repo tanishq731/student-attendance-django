@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submission Successful</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'students/style.css' %}">
+</head>
+<body>
+    <h2>✅ Thank you!</h2>
+    <p>Your attendance request has been submitted and is pending approval.</p>
+
+    <a href="{% url 'submit_attendance' %}">← Submit Another</a><br><br>
+    <a href="{% url 'home' %}">🏠 Back to Home</a>
+</body>
+</html>

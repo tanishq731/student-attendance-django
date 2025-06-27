@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Attendance</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'students/style.css' %}">
+</head>
+<body>
+    <h2>Student Attendance Submission</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <p>Name: <input type="text" name="name" required></p>
+        <p>Roll No: <input type="text" name="roll_no" required></p>
+        <p>Course: <input type="text" name="course" required></p>
+        <p>Status:
+            <select name="status" required>
+                <option value="Present">Present</option>
+                <option value="Absent">Absent</option>
+            </select>
+        </p>
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    <a href="{% url 'home' %}">🏠 Back to Home</a>
+</body>
+</html>
